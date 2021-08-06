@@ -8,12 +8,12 @@
 
 2.  bash script (gencsv.sh)
 --------------------------------------
-filename=inputFile
-> $filename
-for (( value=1 ; value <=10 ; value++ ))
-do
-echo $value,$RANDOM >> $filename
-done
+# filename=inputFile
+# > $filename
+# for (( value=1 ; value <=10 ; value++ ))
+# do
+# echo $value,$RANDOM >> $filename
+# done
 -------------------------------------
 
 3. To run the container in background with inputFile generated : 
