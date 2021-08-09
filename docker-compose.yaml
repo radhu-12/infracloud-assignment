@@ -4,33 +4,19 @@ services:
 
   prometheus:
     image: prom/prometheus:latest
+    user: root
     container_name: prometheus
     ports:
     - 9090:9090
-    command:
-    - --config.file=/etc/prometheus/prometheus.yml
     volumes:
-    - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
-    depends_on:
-    - cadvisor
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
-    container_name: cadvisor
-    ports:
-    - 8080:8080
-    volumes:
-    - /:/rootfs:ro
-    - /var/run:/var/run:rw
-    - /sys:/sys:ro
-    - /var/lib/docker/:/var/lib/docker:ro
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
     - web
- 
   web:
     image: infracloudio/csvserver:latest
     ports:
-    - "9393:9300"
+    - 9393:9300
     environment:
     - CSVSERVER_BORDER=Orange
     volumes:
-    - /root/infracloud-assignment/inputFile:/csvserver/inputdata 
+    - /root/csvserver/solution/inputFile:/csvserver/inputdata
