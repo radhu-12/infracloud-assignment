@@ -3,7 +3,7 @@ services:
 
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.22.0
     user: root
     container_name: prometheus
     ports:
